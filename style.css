@@ -1,0 +1,126 @@
+:root,
+[data-bs-theme=light] {
+    --main-background: #ffffff;
+    --sidebar-background: #e6e7e9;
+    --main-text-color: #192d4e;
+    --main-hover-color: #dcdfe4;
+    --main-active-color: #b0b0b1;
+    --main-transparent-color: #9fadbc;
+    --CB-text-color: #82aeff;
+    --UI-text-color: #192d4e;
+}
+
+[data-bs-theme="dark"] {
+    --main-background: #1d2125;
+    --sidebar-background: #15181b;
+    --main-text-color: #ffffff;
+    --CB-text-color: #363e58;
+    --UI-text-color: #c9c3c3;
+    --main-hover-color: #262a2e;
+    --main-active-color: #7b7c7c;
+    --main-transparent-color: #9fadbc;
+}
+
+
+.cb-container {
+    display: flex;
+    width: 100%;
+    background-color: var(--main-background);
+}
+
+.cb-sidebar {
+    display: flex;
+    flex-direction: column;
+    width: 310px;
+    height: 100vh;
+    background-color: var(--sidebar-background);
+}
+
+.cb-sidebar-top {
+    width: 100%;
+    height: 70px;
+    border-bottom: 1px solid #333c43;
+    border-right: 1px solid #333c43;
+}
+
+.sidebar-logo-text {
+    display: flex;
+    font-size: 35px;
+    font-weight: 700;
+}
+
+.CB-Text {
+    font-family: monospace;
+    color: var(--CB-text-color);
+}
+
+.UI-Text {
+    color: var(--UI-text-color);
+}
+
+.category-text {
+    font-size: 14px;
+    padding-left: 8px;
+    font-weight: 500;
+}
+
+
+.cb-item {
+    position: relative;
+    overflow: hidden;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    z-index: 1;
+    transition: transform 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+}
+
+.cb-item > * {
+    position: relative;
+    z-index: 2;
+}
+
+.cb-item::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 100%;
+    background-color: var(--main-hover-color);
+    z-index: 1;
+    transition: width 0.5s ease;
+}
+
+.cb-item:hover::before {
+    width: 100%;
+}
+
+.item-text {
+    transition: transform 0.3s ease;
+}
+
+.cb-item:hover .item-text {
+    transform: translateX(5px);
+}
+
+.cb-item.active {
+    background-color: var(--main-active-color);
+    color: #fff; 
+}
+
+.cb-item.active::before {
+    display: none;
+}
+
+.cb-item.active::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 3px;
+    height: 100%;
+    background-color: var(--main-text-color); 
+    z-index: 3;
+    border-radius: 2px;
+}
